@@ -15,11 +15,50 @@ body {
     grid-template-columns: [main-start] 1fr [main-end];
 }
 
+/* Navbar things */
+
+.nav-wrapper {
+    position: fixed; /* Makes it float above other content */
+    top: 1rem; /* Distance from top of page */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 1000; /* Make sure it appears above other elements */
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    backdrop-filter: blur(5px); /* Optional: glassmorphism effect */
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 2rem;
+}
+
+.navbar-floating {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-floating nav {
+    display: flex;
+    gap: 2rem; /* Adjust as needed */
+}
+
+.nav-text {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-text:hover {
+    color: rgb(100, 100, 100);
+    transition: color 0.3s ease-in-out;
+}
+
 .main {
     padding-inline: 1rem;
     padding-block: 2rem;
-    max-width: 80rem;
+    max-width: 85rem;
     margin-inline: auto;
+    padding-top: 3rem;
 }
 
 .main-title {
@@ -49,21 +88,71 @@ body {
     scale: 1.05;
 }
 
-.nav-wrapper {
+/* Make your fullscreen viewer hidden by default */
+#fullscreen-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
-    background: linear-gradient(0deg, rgba(255, 248, 220, 1) 0%, rgba(179, 174, 150, 1) 100%);
-    padding: 1rem;
+    align-items: center;
     justify-content: center;
+    z-index: 10000;
+
+    /* Animation setup */
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#fullscreen-viewer img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+#fullscreen-viewer.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+#close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
 }
 
 @media (max-width: 900px) {
     .gallery {
-        column-count: 2;
+        column-count: 3;
     }
 }
 
 @media (max-width: 600px) {
     .gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 400px) {
+    .gallery {
         column-count: 1;
     }
+}
+
+.footer-container {
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
 }

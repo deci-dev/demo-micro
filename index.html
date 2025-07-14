@@ -58,30 +58,41 @@
         </div>
     </footer>
     <script>
-        // Fullscreen image viewer functionality
+        // === Fullscreen Image Viewer ===
         const fullscreenViewer = document.getElementById("fullscreen-viewer");
         const fullscreenImage = document.getElementById("fullscreen-image");
         const closeBtn = document.getElementById("close-btn");
 
-        document.querySelectorAll(".clickable-image").forEach(img => {
+        // Show fullscreen viewer when an image is clicked
+        document.querySelectorAll(".clickable-image").forEach((img) => {
             img.addEventListener("click", () => {
                 fullscreenImage.src = img.src;
                 fullscreenViewer.classList.add("show");
-                document.body.classList.add("fullscreen-open"); // Entr fullscreen
+                // document.body.classList.add("fullscreen-open"); // Prevent scrolling
             });
         });
 
+        // Unified close function
         function closeFullscreen() {
             fullscreenViewer.classList.remove("show");
-            document.body.classList.remove("fullscreen-open");
+            // document.body.classList.remove("fullscreen-open"); // Restore scrolling
         }
 
+        // Close on close button
         closeBtn.addEventListener("click", closeFullscreen);
+
+        // Close when clicking outside the image or on background
         fullscreenViewer.addEventListener("click", (e) => {
-            if (e.target === fullscreenViewer || e.target === closeBtn) closeFullscreen();
+            if (e.target === fullscreenViewer || e.target === closeBtn) {
+                closeFullscreen();
+            }
         });
+
+        // Close with ESC key
         document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") closeFullscreen();
+            if (e.key === "Escape") {
+                closeFullscreen();
+            }
         });
 
         // "Load" effect event

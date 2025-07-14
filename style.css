@@ -29,7 +29,7 @@ body.fullscreen-open {
     top: 1rem; /* Distance from top of page */
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
-    z-index: 999 !important; /* Make sure it appears above other elements */
+    z-index: 100 !important; /* Make sure it appears above other elements */
     background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
     backdrop-filter: blur(5px); /* Optional: glassmorphism effect */
     border-radius: 1rem;
@@ -129,7 +129,7 @@ body.fullscreen-open {
 #fullscreen-viewer {
     position: fixed;
     inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0 */
-    z-index: 99999 !important;
+    z-index: 9999 !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,6 +143,8 @@ body.fullscreen-open {
 #fullscreen-viewer img {
     max-width: 90vw;
     max-height: 90vh;
+    width: auto;
+    height: auto;
     object-fit: contain;
     border-radius: 1rem;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);

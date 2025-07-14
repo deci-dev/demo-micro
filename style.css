@@ -8,11 +8,18 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background-color: rgb(255, 248, 220);
     min-block-size: 100svh;
-    display: grid;
-    grid-template-columns: [main-start] 1fr [main-end];
+}
+
+body.fullscreen-open {
+    overflow: hidden;
 }
 
 /* Navbar things */
@@ -22,7 +29,7 @@ body {
     top: 1rem; /* Distance from top of page */
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
-    z-index: 1000; /* Make sure it appears above other elements */
+    z-index: 999 !important; /* Make sure it appears above other elements */
     background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
     backdrop-filter: blur(5px); /* Optional: glassmorphism effect */
     border-radius: 1rem;
@@ -39,7 +46,13 @@ body {
 
 .navbar-floating nav {
     display: flex;
-    gap: 2rem; /* Adjust as needed */
+    gap: 1rem; /* Adjust as needed */
+}
+
+@media (max-width: 500px) {
+    .navbar-floating {
+    gap: 5px;
+    }
 }
 
 .nav-text {
@@ -56,9 +69,17 @@ body {
 .main {
     padding-inline: 1rem;
     padding-block: 2rem;
-    max-width: 85rem;
+    max-width: 95rem;
     margin-inline: auto;
     padding-top: 3rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease-in, transform 0.5s ease-out;
+}
+
+.main.loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .main-title {
@@ -82,6 +103,22 @@ body {
     border-radius: 5px;
     transition: scale 0.4s ease;
     break-inside: avoid;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: imageFadeIn 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+.main.loaded .gallery img {
+    animation: imageFadeIn 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes imageFadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .gallery img:hover {
@@ -91,17 +128,12 @@ body {
 /* Make your fullscreen viewer hidden by default */
 #fullscreen-viewer {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
+    inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0 */
+    z-index: 99999 !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
-
-    /* Animation setup */
+    background-color: rgba(0, 0, 0, 0.9);
     opacity: 0;
     transform: scale(0.95);
     pointer-events: none;
@@ -109,8 +141,8 @@ body {
 }
 
 #fullscreen-viewer img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 90vw;
+    max-height: 90vh;
     object-fit: contain;
     border-radius: 1rem;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);

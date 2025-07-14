@@ -12,7 +12,7 @@ Projek mulai y wok.
 
 Album feature maybe? Ntahlah jujur, ini fotonya ada berapa-berapanya... kalo banyak sih, diriku bikin aja lah. Paling kalo dikit, tak comment aja deh.
 
-### Perubahan
+### Perubahan - 12/07/25
 
 - Ditambah sistem folder (kalo emg banyak fotonya.)
 - Dibenerin responsivitasnya (bismillah bener.)
@@ -21,6 +21,14 @@ Album feature maybe? Ntahlah jujur, ini fotonya ada berapa-berapanya... kalo ban
 - Kalo somehow, dibawah 400px, bakal cuma muncul 1 baris.
 - Ditambah fullscreen view.
 - Ditambah footer.
+
+## Log - 14/07/25
+
+Yowes
+
+### Perubahan - 14/07/25
+
+- lorem
 
 ## To-do
 

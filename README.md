@@ -1,6 +1,6 @@
 # demo-micro
 
-MASIH PREVIEW, SABAR
+KLAR. (semoga.)
 
 ## Log - 11/07/25
 
@@ -24,17 +24,33 @@ Album feature maybe? Ntahlah jujur, ini fotonya ada berapa-berapanya... kalo ban
 
 ## Log - 14/07/25
 
-Yowes
+Jadi gini le, kemaren (yg ini) lupa logging wok 🤗
 
 ### Perubahan - 14/07/25
 
-- lorem
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dos euismod ...
+
+## Log - 15/07/25
+
+KELAR WOKKKKKKKKKKKKKk.....
+
+### Perubahan - 15/07/25
+
+- Dibenerin viewportnya
+- Dibenerin responsivitasnya
+- Dibuat sistem **NAVBAR DADAKAN.** Yang kayaknya gaakan kepake.
+- Code dibenerin
+
+*Udah ah, atmin mw tidur.*
+
+---
 
 ## To-do
 
 - [x] ~~Placeholder~~
 - [x] ~~Improve responsivitas~~
 - [x] ~~Fullscreen mode~~
-- [ ] Improve responsivitas, Revisi 2
+- [x] ~~Improve responsivitas, Revisi 2~~
 - [x] ~~Sare 1~~
-- [ ] Sare 2
+- [x] ~~Sare 2~~
+- [x] ~~Sare 3~~

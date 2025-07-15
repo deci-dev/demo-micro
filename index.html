@@ -1,110 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Micro - Divisi Programming</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Micro - Divisi Programming</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navbar -->
-    <div class="nav-wrapper">
-        <div class="navbar-floating">
-            <nav>
-                <a href="#" class="nav-text">About</a>
-                <a href="#" class="nav-text">Album 1</a>
-                <a href="#" class="nav-text">Album 2</a>
-            </nav>
-        </div>
+  <!-- Navbar (uncomment if needed)
+  <div class="nav-wrapper">
+    <div class="navbar-floating">
+      <nav>
+        <a href="#" class="nav-text">About</a>
+        <a href="#" class="nav-text">Album 1</a>
+        <a href="#" class="nav-text">Album 2</a>
+      </nav>
     </div>
+  </div>
+  -->
 
-    <!-- Main (Gallery) -->
-    <main class="main">
-        <h1 class="main-title">Demo Micro - Programming & Photography.</h1>
+  <main class="main">
+    <h1 class="main-title">Demo Micro - Programming & Photography.</h1>
+    <div class="gallery">
+      <!-- Thumbnails -->
+      <img class="clickable-image" src="img/20240726_150015.jpg" alt="Image 1" />
+      <img class="clickable-image" src="img/20240726_155345.jpg" alt="Image 2" />
+      <img class="clickable-image" src="img/20241009_165938.jpg" alt="Image 3" />
+      <img class="clickable-image" src="img/20241011_160415.jpg" alt="Image 4" />
+      <img class="clickable-image" src="img/20250201_184530.jpg" alt="Image 5" />
+      <img class="clickable-image" src="img/20250505_160143.jpg" alt="Image 6" />
+      <img class="clickable-image" src="img/20250517_063221.jpg" alt="Image 7" />
+      <img class="clickable-image" src="img/20250530_095243.jpg" alt="Image 8" />
+      <img class="clickable-image" src="img/20250530_095318_047_saved.jpg" alt="Random Image 9" />
+      <img class="clickable-image" src="img/20250530_095800.jpg" alt="Random Image 10" />
+    </div>
+  </main>
 
-        <div class="gallery">
-                <img class="clickable-image" src="img/1000020666.jpg" alt="Random Image 1">
-                <img class="clickable-image" src="img/1000020671.jpg" alt="Random Image 2">
-                <img class="clickable-image" src="img/1000022281.jpg" alt="Random Image 3">
-                <img class="clickable-image" src="img/20240726_150015.jpg" alt="Random Image 4">
-                <img class="clickable-image" src="img/20240726_155345.jpg" alt="Random Image 5">
-                <img class="clickable-image" src="img/20241009_165938.jpg" alt="Random Image 6">
-                <img class="clickable-image" src="img/20241011_160415.jpg" alt="Random Image 7">
-                <img class="clickable-image" src="img/20250201_184530.jpg" alt="Random Image 8">
-                <img class="clickable-image" src="img/20250505_160143.jpg" alt="Random Image 9">
-                <img class="clickable-image" src="img/20250517_063221.jpg" alt="Random Image 10">
-                <img class="clickable-image" src="img/20250530_095243.jpg" alt="Random Image 11">
-                <img class="clickable-image" src="img/20250530_095318_047_saved.jpg" alt="Random Image 9">
-                <img class="clickable-image" src="img/20250530_095800.jpg" alt="Random Image 12">
-                <img class="clickable-image" src="img/20250507_155902.jpg" alt="Random Image 13">
-        </div>
+  <!-- Fullscreen viewer -->
+  <div id="fullscreen-viewer">
+    <span id="close-btn">&times;</span>
+    <img id="fullscreen-image" alt="Full Image" />
+  </div>
 
-        <!-- Fullscreen viewer -->
-        <div id="fullscreen-viewer">
-            <span id="close-btn">&times;</span>
-            <img id="fullscreen-image" src="https://images.unsplash.com/photo-1617634667039-8e4cb277ab46" alt="Full Image">
-        </div>
-    </main>
+  <footer class="footer">
+    <div class="footer-container">
+      <p>Made by MICRO's Programming Division.</p>
+    </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-items">
-                <p>Made by MICRO's Programming Division.</p>
-            </div>
-        </div>
-    </footer>
-    <script>
-        // === Fullscreen Image Viewer ===
-        const fullscreenViewer = document.getElementById("fullscreen-viewer");
-        const fullscreenImage = document.getElementById("fullscreen-image");
-        const closeBtn = document.getElementById("close-btn");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const viewer = document.getElementById("fullscreen-viewer");
+      const viewerImg = document.getElementById("fullscreen-image");
+      const closeBtn = document.getElementById("close-btn");
+      // const nav = document.querySelector(".nav-wrapper"); // enable if navbar is back
 
-        // Show fullscreen viewer when an image is clicked
-        document.querySelectorAll(".clickable-image").forEach((img) => {
-            img.addEventListener("click", () => {
-                fullscreenImage.src = img.src;
-                fullscreenViewer.classList.add("show");
-                // document.body.classList.add("fullscreen-open"); // Prevent scrolling
-            });
+      // Open fullscreen
+      document.querySelectorAll(".clickable-image").forEach(img => {
+        img.addEventListener("click", () => {
+          viewerImg.src = img.src;
+          viewer.classList.add("show");
+          document.body.classList.add("fullscreen-open");
+          // nav.style.display = "none";
         });
+      });
 
-        // Unified close function
-        function closeFullscreen() {
-            fullscreenViewer.classList.remove("show");
-            // document.body.classList.remove("fullscreen-open"); // Restore scrolling
-        }
+      // Close fullscreen
+      function closeFullscreen() {
+        viewer.classList.remove("show");
+        document.body.classList.remove("fullscreen-open");
+        // nav.style.display = "";
+      }
 
-        // Close on close button
-        closeBtn.addEventListener("click", closeFullscreen);
+      closeBtn.addEventListener("click", closeFullscreen);
+      viewer.addEventListener("click", e => {
+        if (e.target === viewer) closeFullscreen();
+      });
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closeFullscreen();
+      });
 
-        // Close when clicking outside the image or on background
-        fullscreenViewer.addEventListener("click", (e) => {
-            if (e.target === fullscreenViewer || e.target === closeBtn) {
-                closeFullscreen();
-            }
-        });
-
-        // Close with ESC key
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") {
-                closeFullscreen();
-            }
-        });
-
-        // "Load" effect event
-        document.addEventListener("DOMContentLoaded", () => {
-            // Trigger page load animation
-            document.querySelector(".main").classList.add("loaded");
-
-            // Add stagger delay to images
-            document.querySelectorAll(".gallery img").forEach((img, index) => {
-                img.style.setProperty("--delay", `${index * 100}ms`);
-            });
-        });
-    </script>
+      // Page load animation
+      document.querySelector(".main").classList.add("loaded");
+      document.querySelectorAll(".gallery img").forEach((img, i) => {
+        img.style.setProperty("--delay", `${i * 100}ms`);
+      });
+    });
+  </script>
 </body>
 </html>

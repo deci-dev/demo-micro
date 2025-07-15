@@ -1,192 +1,167 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 html, body {
-    height: 100%;
-    overflow-x: hidden;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
-    background-color: rgb(255, 248, 220);
-    min-block-size: 100svh;
+  background: rgb(255, 248, 220);
+  min-block-size: 100svh;
 }
 
 body.fullscreen-open {
-    overflow: hidden;
+  overflow: hidden;
 }
 
-/* Navbar things */
-
-.nav-wrapper {
-    position: fixed; /* Makes it float above other content */
-    top: 1rem; /* Distance from top of page */
-    left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
-    z-index: 100 !important; /* Make sure it appears above other elements */
-    background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
-    backdrop-filter: blur(5px); /* Optional: glassmorphism effect */
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 0.75rem 2rem;
-}
-
-.navbar-floating {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-}
-
-.navbar-floating nav {
-    display: flex;
-    gap: 1rem; /* Adjust as needed */
-}
-
-@media (max-width: 500px) {
-    .navbar-floating {
-    gap: 5px;
-    }
-}
-
-.nav-text {
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.nav-text:hover {
-    color: rgb(100, 100, 100);
-    transition: color 0.3s ease-in-out;
-}
-
+/* Main content */
 .main {
-    padding-inline: 1rem;
-    padding-block: 2rem;
-    max-width: 95rem;
-    margin-inline: auto;
-    padding-top: 3rem;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.5s ease-in, transform 0.5s ease-out;
+  max-width: 95rem;
+  margin: 1rem auto 0;
+  padding: 1rem 1rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-out;
 }
-
 .main.loaded {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .main-title {
-    font-size: 2rem;
-    text-align: center;
-    line-height: 1.5;
-    margin-block: 1rem 2rem;
+  font-size: 2rem;
+  text-align: center;
+  margin: 1rem 0 2rem;
+  line-height: 1.5;
 }
 
+/* Gallery */
 .gallery {
-    column-count: 4;
-    column-gap: 0.75rem;
-    padding: 0.75rem;
+  column-count: 4;
+  column-gap: 0.75rem;
+  padding: 0.75rem;
 }
-
 .gallery img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 0.75rem;
-    border-radius: 5px;
-    transition: scale 0.4s ease;
-    break-inside: avoid;
-    opacity: 0;
-    transform: scale(0.95);
-    animation: imageFadeIn 0.5s ease-out forwards;
-    animation-delay: var(--delay, 0s);
+  width: 100%;
+  margin-bottom: 0.75rem;
+  border-radius: 5px;
+  display: block;
+  transition: scale 0.4s ease;
+  break-inside: avoid;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: imageFadeIn 0.5s ease-out forwards;
+  animation-delay: var(--delay, 0s);
 }
-
 .main.loaded .gallery img {
-    animation: imageFadeIn 0.5s ease-out forwards;
-    animation-delay: var(--delay, 0s);
+  animation: imageFadeIn 0.5s ease-out forwards;
+}
+.gallery img:hover {
+  scale: 1.05;
 }
 
 @keyframes imageFadeIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.gallery img:hover {
-    scale: 1.05;
-}
-
-/* Make your fullscreen viewer hidden by default */
-#fullscreen-viewer {
-    position: fixed;
-    inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0 */
-    z-index: 9999 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.9);
-    opacity: 0;
-    transform: scale(0.95);
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-#fullscreen-viewer img {
-    max-width: 90vw;
-    max-height: 90vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 1rem;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-}
-
-#fullscreen-viewer.show {
+  to {
     opacity: 1;
     transform: scale(1);
-    pointer-events: auto;
+  }
 }
 
+/* Fullscreen viewer */
+#fullscreen-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.9);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#fullscreen-viewer.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+#fullscreen-viewer img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 1rem;
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
 #close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    font-size: 3rem;
-    color: white;
-    cursor: pointer;
-    user-select: none;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
 }
 
-@media (max-width: 900px) {
-    .gallery {
-        column-count: 3;
-    }
-}
-
-@media (max-width: 600px) {
-    .gallery {
-        column-count: 2;
-    }
-}
-
-@media (max-width: 400px) {
-    .gallery {
-        column-count: 1;
-    }
-}
-
+/* Footer */
 .footer-container {
-    background: black;
-    color: white;
-    display: flex;
-    justify-content: center;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Responsive columns */
+@media (max-width: 900px) {
+  .gallery { column-count: 3; }
+}
+@media (max-width: 600px) {
+  .gallery { column-count: 2; }
+}
+@media (max-width: 400px) {
+  .gallery { column-count: 1; }
+}
+
+/* Navbar (keep CSS, ignore if unused) */
+.nav-wrapper {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 2rem;
+}
+.navbar-floating {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-floating nav {
+  display: flex;
+  gap: 1rem;
+}
+.nav-text {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+.nav-text:hover {
+  color: rgb(100, 100, 100);
 }

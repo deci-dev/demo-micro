@@ -121,6 +121,16 @@ body.fullscreen-open {
   justify-content: center;
   padding: 1rem;
 }
+.source-code {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.source-code:hover {
+  color: aqua;
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+}
 
 /* Responsive columns */
 @media (max-width: 900px) {

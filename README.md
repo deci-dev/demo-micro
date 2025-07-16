@@ -43,6 +43,15 @@ KELAR WOKKKKKKKKKKKKKk.....
 
 *Udah ah, atmin mw tidur.*
 
+## Log - 16/07/25
+
+KELAAAAAAAAAAARRRRR.....
+
+### Perubahan - 16/07/25
+
+- Ditambah foto lagi (10 -> 20)
+- Ditambah link source code
+
 ---
 
 ## To-do
@@ -54,3 +63,4 @@ KELAR WOKKKKKKKKKKKKKk.....
 - [x] ~~Sare 1~~
 - [x] ~~Sare 2~~
 - [x] ~~Sare 3~~
+- [x] ~~Sare 4~~
